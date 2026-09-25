@@ -32,7 +32,7 @@ Render runs `build.js` to set the game API origin, then publishes the `public/` 
 
 The game's browser files are copied into `public/square-game.html` and `public/square-game-assets/`, so the homepage stays a Render static site. Render rewrites `/square-game` and `/square-game/room/*` to the game page, and redirects common spellings to `/square-game`. The page calls the separate Square Game Render web service for its API.
 
-Set `GAME_API_ORIGIN` on the homepage static service to the game service's HTTPS `onrender.com` origin, for example `https://your-game-service.onrender.com` (no path). `build.js` writes this into `public/square-game-assets/config.js` during deployment. For an existing Render Blueprint, add this environment variable in the dashboard; Render does not prompt for new `sync: false` variables on updates. Redeploy the homepage after setting it.
+`GAME_API_ORIGIN` is set in `render.yaml` to the Square Game web service's public origin. `build.js` writes this into `public/square-game-assets/config.js` during deployment. If the existing Render static site is configured manually rather than through its Blueprint, set the same variable in its dashboard Environment page before redeploying.
 
 When changing the game UI, copy the updated `public/index.html`, `public/styles.css`, `public/app.js`, and `public/config.js` from the Square Game repo into the corresponding homepage page and asset files, updating the page's three asset URLs. The game server and this static page can then deploy separately. GoDaddy DNS and the homepage's Render static service do not need to change.
 

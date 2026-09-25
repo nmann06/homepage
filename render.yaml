@@ -6,7 +6,7 @@ services:
     staticPublishPath: public
     envVars:
       - key: GAME_API_ORIGIN
-        sync: false
+        value: https://square-game-ab8t.onrender.com
     domains:
       - nathanielmann.ca
     routes:
