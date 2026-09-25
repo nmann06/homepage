@@ -8,9 +8,9 @@ The investment tool it links to, Lettuce, lives in its own repository, [nmann06/
 
 | Path | Purpose |
 | --- | --- |
-| `public/index.html` | The page: hero, about and projects |
+| `public/index.html` | Home, About and Projects views |
 | `public/site.css` | Styles |
-| `public/site.js` | Shows the `/about` or `/portfolio` view and sets the footer year |
+| `public/site.js` | Shows the home, `/about` or `/projects` view and sets the footer year |
 | `render.yaml` | Render static-site configuration, redirects and rewrites |
 | `serve.js` | Local preview server that mirrors the routes in `render.yaml` |
 
@@ -22,7 +22,7 @@ With Node.js 20 or newer:
 npm start
 ```
 
-Then open `http://127.0.0.1:8080`. You can also open `public/index.html` directly in a browser, though the `/about` and `/portfolio` paths only work through the server.
+Then open `http://127.0.0.1:8080`. You can also open `public/index.html` directly in a browser, though the `/about` and `/projects` paths only work through the server.
 
 ## Build
 
@@ -42,6 +42,6 @@ The site is a Render **static site** defined in `render.yaml`. Every push to `ma
 
 - `nathanielmann.ca` is the custom domain.
 - `/app`, `/research.html` and `/login` redirect to `app.nathanielmann.ca`, so links from before the tool moved keep working.
-- `/about` and `/portfolio` are rewritten to `index.html`.
+- `/about` and `/projects` are rewritten to `index.html`; `/portfolio` redirects to `/projects`.
 
 To set it up from scratch, create a new Blueprint in Render from this repository. No environment variables or secrets are needed. Render shows the DNS record to add for the custom domain.

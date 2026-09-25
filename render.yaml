@@ -50,9 +50,12 @@ services:
       - type: rewrite
         source: /square-game/room/*
         destination: /square-game.html
+      - type: redirect
+        source: /portfolio
+        destination: /projects
       - type: rewrite
         source: /about
         destination: /index.html
       - type: rewrite
-        source: /portfolio
+        source: /projects
         destination: /index.html

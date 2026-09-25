@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#004225">
-  <meta name="description" content="Nathaniel Mann, electrical engineering student. Embedded systems, cybersecurity and DIY projects.">
+  <meta name="description" content="Nathaniel Mann, electrical engineering student. Programming, DIY projects and embedded systems.">
   <title>Nathaniel Mann — Electrical engineering student</title>
   <link rel="stylesheet" href="/site.css">
 </head>
@@ -14,8 +14,9 @@
       <a class="identity" href="/" aria-label="Nathaniel Mann, home"><span class="identity-mark">NM<span>.</span></span><span class="identity-name">NATHANIEL MANN</span></a>
       <nav class="site-nav" aria-label="Site navigation">
         <a href="/" data-nav="home">Home</a>
-        <a href="/#projects">Projects</a>
-        <a href="/#about">About</a>
+        <a href="/projects" data-nav="projects">Projects</a>
+        <a href="/about" data-nav="about">About</a>
+        <a href="/square-game">Square Game</a>
         <a href="https://app.nathanielmann.ca/app">Investment Tool</a>
       </nav>
     </header>
@@ -27,27 +28,57 @@
           <div class="hero-copy">
             <div class="section-label"><span class="label-line"></span> ELECTRICAL ENGINEERING STUDENT</div>
             <h1>Nathaniel Mann</h1>
-            <div class="hero-actions"><a class="button-light" href="#projects">View projects <span aria-hidden="true">↓</span></a><a class="button-quiet" href="#about">About me <span aria-hidden="true">↓</span></a></div>
           </div>
         </section>
 
         <section class="about-section" id="about">
           <div class="section-label dark"><span class="label-line"></span> ABOUT</div>
-          <p class="about-text">I'm a third year electrical engineering student who loves working with embedded systems, cybersecurity and DIY projects.</p>
-          <ul class="interest-tags" aria-label="Interests"><li>Embedded systems</li><li>Cybersecurity</li><li>DIY projects</li></ul>
+          <p class="about-text">I'm a third year electrical engineering student who loves programming, DIY projects, and working with embedded systems.</p>
+          <p class="about-text">In my free time I play varsity ultimate at Queen's, kitesurf, paint and ski.</p>
+          <a class="text-link" href="/about">More about me <span aria-hidden="true">→</span></a>
         </section>
 
         <section class="explore-section" id="projects">
-          <div class="section-header"><div><div class="section-label dark"><span class="label-line"></span> PROJECTS</div><h2>Things I've <em>built.</em></h2></div></div>
+          <div class="section-header"><div><div class="section-label dark"><span class="label-line"></span> PROJECTS</div><h2>Things I've <em>built.</em></h2></div><a class="text-link" href="/projects">All projects <span aria-hidden="true">→</span></a></div>
           <div class="explore-grid">
             <article class="explore-card featured"><span class="card-index">01 / WEB APP</span><div class="card-icon">◈</div><h3>Lettuce: investment research tool</h3><p>Charts a company's stock price against its real earnings and dividends from SEC filings, with split detection and a five-year scenario builder. Node.js, vanilla JavaScript and SVG.</p><div class="card-link"><a href="https://app.nathanielmann.ca/app">Live demo <span class="card-lock">Password required <span aria-hidden="true">↗</span></span></a><a href="https://github.com/nmann06/Investment-Tool">GitHub <span aria-hidden="true">↗</span></a></div></article>
-            <div class="explore-card upcoming"><span class="card-index">02 / NEXT</span><div class="card-icon">◎</div><h3>More projects coming soon</h3><p>Embedded, security and hardware builds will show up here as I write them up.</p></div>
+            <article class="explore-card"><span class="card-index">02 / WEB GAME</span><div class="card-icon">□</div><h3>Square Game</h3><p>A two-player card game inspired by Iota. Create a room, share the 4-digit code and build lines of colour, shape and number. Node.js, Supabase and vanilla JavaScript.</p><div class="card-link"><a href="/square-game">Play <span aria-hidden="true">↗</span></a><a href="https://github.com/nmann06/square-game">GitHub <span aria-hidden="true">↗</span></a></div></article>
           </div>
         </section>
       </div>
 
-      <section id="about-page" class="site-page placeholder-page" hidden><div class="section-label dark"><span class="label-line"></span> PERSONAL</div><h1>About Me<span class="period">.</span></h1><p class="about-text">I'm a third year electrical engineering student who loves working with embedded systems, cybersecurity and DIY projects.</p></section>
-      <section id="portfolio-page" class="site-page placeholder-page" hidden><div class="section-label dark"><span class="label-line"></span> WORK</div><h1>Projects<span class="period">.</span></h1><p class="about-text">See the <a href="/#projects">projects on the home page</a>.</p></section>
+      <div id="about-page" class="site-page" hidden>
+        <section class="page-intro">
+          <div class="section-label dark"><span class="label-line"></span> PERSONAL</div>
+          <h1>About Me<span class="period">.</span></h1>
+          <p class="about-text">I'm a third year electrical engineering student who loves programming, DIY projects, and working with embedded systems.</p>
+          <p class="about-text">In my free time I play varsity ultimate at Queen's, kitesurf, paint and ski.</p>
+        </section>
+        <section class="page-body">
+          <dl class="fact-list">
+            <div><dt>Studying</dt><dd>Electrical engineering, third year</dd></div>
+            <div><dt>Into</dt><dd>Programming, DIY projects and embedded systems</dd></div>
+            <div><dt>Outside class</dt><dd>Varsity ultimate at Queen's, kitesurfing, painting and skiing</dd></div>
+            <div><dt>Code</dt><dd><a href="https://github.com/nmann06">github.com/nmann06 <span aria-hidden="true">↗</span></a></dd></div>
+          </dl>
+          <a class="text-link" href="/projects">See my projects <span aria-hidden="true">→</span></a>
+        </section>
+      </div>
+
+      <div id="projects-page" class="site-page" hidden>
+        <section class="page-intro">
+          <div class="section-label dark"><span class="label-line"></span> WORK</div>
+          <h1>Projects<span class="period">.</span></h1>
+          <p class="about-text">Software and hardware I've built, from web apps to games.</p>
+        </section>
+        <section class="page-body">
+          <div class="explore-grid">
+            <article class="explore-card featured"><span class="card-index">01 / WEB APP</span><div class="card-icon">◈</div><h3>Lettuce: investment research tool</h3><p>Charts a company's stock price against its real earnings and dividends from SEC filings, with split detection and a five-year scenario builder. Node.js, vanilla JavaScript and SVG.</p><div class="card-link"><a href="https://app.nathanielmann.ca/app">Live demo <span class="card-lock">Password required <span aria-hidden="true">↗</span></span></a><a href="https://github.com/nmann06/Investment-Tool">GitHub <span aria-hidden="true">↗</span></a></div></article>
+            <article class="explore-card"><span class="card-index">02 / WEB GAME</span><div class="card-icon">□</div><h3>Square Game</h3><p>A two-player card game inspired by Iota. Players build lines where colour, shape and number are each all the same or all different, and completing a four-card line doubles the score. Rooms use a 4-digit code, with turn timers from one minute to seven days and email alerts for longer games. Node.js, Supabase, Resend and vanilla JavaScript.</p><div class="card-link"><a href="/square-game">Play <span aria-hidden="true">↗</span></a><a href="https://github.com/nmann06/square-game">GitHub <span aria-hidden="true">↗</span></a></div></article>
+            <div class="explore-card upcoming"><span class="card-index">03 / NEXT</span><div class="card-icon">◎</div><h3>More projects coming soon</h3><p>Embedded and hardware builds will show up here as I write them up.</p></div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer"><span>© <span id="footer-year"></span> Nathaniel Mann</span><a href="https://app.nathanielmann.ca/app">Investment Tool ↗</a></footer>
