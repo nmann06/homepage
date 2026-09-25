@@ -26,7 +26,15 @@ Then open `http://127.0.0.1:8080`. You can also open `public/index.html` directl
 
 ## Build
 
-There is no build step. Render publishes the `public/` folder as is.
+Render runs `build.js` to set the game API origin, then publishes the `public/` folder.
+
+## Square Game
+
+The game's browser files are copied into `public/square-game.html` and `public/square-game-assets/`, so the homepage stays a Render static site. Render rewrites `/square-game` and `/square-game/room/*` to the game page, and redirects common spellings to `/square-game`. The page calls the separate Square Game Render web service for its API.
+
+Set `GAME_API_ORIGIN` on the homepage static service to the game service's HTTPS `onrender.com` origin, for example `https://your-game-service.onrender.com` (no path). `build.js` writes this into `public/square-game-assets/config.js` during deployment. For an existing Render Blueprint, add this environment variable in the dashboard; Render does not prompt for new `sync: false` variables on updates. Redeploy the homepage after setting it.
+
+When changing the game UI, copy the updated `public/index.html`, `public/styles.css`, `public/app.js`, and `public/config.js` from the Square Game repo into the corresponding homepage page and asset files, updating the page's three asset URLs. The game server and this static page can then deploy separately. GoDaddy DNS and the homepage's Render static service do not need to change.
 
 ## Deploy
 

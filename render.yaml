@@ -2,8 +2,11 @@ services:
   - type: web
     name: homepage
     runtime: static
-    buildCommand: echo "No build step"
+    buildCommand: node build.js
     staticPublishPath: public
+    envVars:
+      - key: GAME_API_ORIGIN
+        sync: false
     domains:
       - nathanielmann.ca
     routes:
@@ -17,6 +20,36 @@ services:
       - type: redirect
         source: /login
         destination: https://app.nathanielmann.ca/login
+      - type: redirect
+        source: /squaregame
+        destination: /square-game
+      - type: redirect
+        source: /squaregame/*
+        destination: /square-game/*
+      - type: redirect
+        source: /square_game
+        destination: /square-game
+      - type: redirect
+        source: /square_game/*
+        destination: /square-game/*
+      - type: redirect
+        source: /sqaure-game
+        destination: /square-game
+      - type: redirect
+        source: /sqaure-game/*
+        destination: /square-game/*
+      - type: redirect
+        source: /Square-Game
+        destination: /square-game
+      - type: redirect
+        source: /Square-Game/*
+        destination: /square-game/*
+      - type: rewrite
+        source: /square-game
+        destination: /square-game.html
+      - type: rewrite
+        source: /square-game/room/*
+        destination: /square-game.html
       - type: rewrite
         source: /about
         destination: /index.html

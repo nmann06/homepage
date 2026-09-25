@@ -1,0 +1,1 @@
+window.SQUARE_GAME_API_ORIGIN = "";
