@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: homepage
+    runtime: static
+    buildCommand: echo "No build step"
+    staticPublishPath: public
+    domains:
+      - nathanielmann.ca
+    routes:
+      # The investment tool used to live on this domain; keep old links working.
+      - type: redirect
+        source: /app
+        destination: https://app.nathanielmann.ca/app
+      - type: redirect
+        source: /research.html
+        destination: https://app.nathanielmann.ca/app
+      - type: redirect
+        source: /login
+        destination: https://app.nathanielmann.ca/login
+      - type: rewrite
+        source: /about
+        destination: /index.html
+      - type: rewrite
+        source: /portfolio
+        destination: /index.html
