@@ -48,6 +48,9 @@ services:
         source: /square-game
         destination: /square-game.html
       - type: rewrite
+        source: /square-game/account
+        destination: /square-game.html
+      - type: rewrite
         source: /square-game/room/*
         destination: /square-game.html
       - type: redirect

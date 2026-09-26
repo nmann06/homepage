@@ -20,7 +20,7 @@ http.createServer((request, response) => {
   }
   if (url.pathname === '/square-game/') return response.writeHead(301, { Location: '/square-game' + url.search }).end();
   if (redirects[url.pathname]) return response.writeHead(301, { Location: redirects[url.pathname] + url.search }).end();
-  const route = /^\/square-game\/room\/[\w-]+$/.test(url.pathname) ? '/square-game.html' : rewrites[url.pathname] || url.pathname;
+  const route = url.pathname === '/square-game/account' || /^\/square-game\/room\/[\w-]+$/.test(url.pathname) ? '/square-game.html' : rewrites[url.pathname] || url.pathname;
   const file = path.join(root, path.normalize(route));
   if (!file.startsWith(root) || !types[path.extname(file)] || !fs.existsSync(file)) return response.writeHead(404).end('Not found');
   response.writeHead(200, { 'Content-Type': types[path.extname(file)] });
