@@ -19,6 +19,7 @@
         <a href="/square-game">Square Game</a>
         <a href="https://app.nathanielmann.ca/app">Investment Tool</a>
       </nav>
+      <a class="resume-link" href="/nathaniel-mann-resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
     </header>
 
     <main>
@@ -44,6 +45,20 @@
             <article class="explore-card featured"><span class="card-index">01 / WEB APP</span><div class="card-icon">◈</div><h3>Lettuce: investment research tool</h3><p>Charts a company's stock price against its real earnings and dividends from SEC filings, with split detection and a five-year scenario builder. Node.js, vanilla JavaScript and SVG.</p><div class="card-link"><a href="https://app.nathanielmann.ca/app">Live demo <span class="card-lock">Password required <span aria-hidden="true">↗</span></span></a><a href="https://github.com/nmann06/Investment-Tool">GitHub <span aria-hidden="true">↗</span></a></div></article>
             <article class="explore-card"><span class="card-index">02 / WEB GAME</span><div class="card-icon">□</div><h3>Square Game</h3><p>A two-player card game inspired by Iota. Create a room, share the 4-digit code and build lines of colour, shape and number. Node.js, Supabase and vanilla JavaScript.</p><div class="card-link"><a href="/square-game">Play <span aria-hidden="true">↗</span></a><a href="https://github.com/nmann06/square-game">GitHub <span aria-hidden="true">↗</span></a></div></article>
           </div>
+        </section>
+        <section class="feedback-section" id="feedback">
+          <div class="section-label dark"><span class="label-line"></span> FEEDBACK</div>
+          <h2>Any feedback on my projects or site? Feel free to leave a message</h2>
+          <form id="feedback-form" class="feedback-form">
+            <div class="feedback-fields">
+              <label>Name<input name="name" type="text" maxlength="100" autocomplete="name" required></label>
+              <label>Email<input name="email" type="email" maxlength="254" autocomplete="email" required></label>
+            </div>
+            <label>Feedback<textarea name="feedback" rows="6" maxlength="5000" required></textarea></label>
+            <input class="feedback-honeypot" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit">Send feedback</button>
+            <p id="feedback-status" role="status" aria-live="polite"></p>
+          </form>
         </section>
       </div>
 
@@ -83,6 +98,7 @@
 
     <footer class="site-footer"><span>© <span id="footer-year"></span> Nathaniel Mann</span><a href="https://app.nathanielmann.ca/app">Investment Tool ↗</a></footer>
   </div>
+  <script src="/square-game-assets/config.js"></script>
   <script src="/site.js"></script>
 </body>
 </html>

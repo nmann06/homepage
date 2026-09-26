@@ -16,6 +16,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .site-nav a:hover,.site-nav a.active{color:var(--green)}
 .site-nav a.active{position:relative}
 .site-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-33px;height:2px;background:var(--brass)}
+.resume-link{flex-shrink:0;color:var(--green);font-size:12px;font-weight:800;white-space:nowrap;border-bottom:1px solid var(--brass);padding-bottom:4px}
+.resume-link:hover{color:#006b3c}
 main{flex:1}
 .site-page[hidden]{display:none}
 .hero{position:relative;min-height:500px;background:var(--green);color:#f5f3ec;overflow:hidden;display:flex;align-items:center;padding:90px clamp(24px,7.5vw,128px)}
@@ -27,6 +29,7 @@ main{flex:1}
 .label-line{display:inline-block;width:23px;height:1px;background:currentColor}
 .hero h1{font-size:clamp(34px,10vw,168px);line-height:1;letter-spacing:-.05em;margin:30px 0 0;font-weight:700;white-space:nowrap}
 .section-header h2 em{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.04em;color:var(--green)}
+.section-header h2 em{font-family:inherit;font-style:normal;font-weight:inherit;letter-spacing:inherit;color:inherit}
 .about-section{padding:96px clamp(24px,7.5vw,128px) 20px;max-width:1700px;margin:auto;scroll-margin-top:20px}
 .about-text{font-size:clamp(22px,2.4vw,34px);line-height:1.45;letter-spacing:-.02em;color:var(--ink);max-width:900px;margin:22px 0 28px}
 .about-text a{color:var(--green);border-bottom:1px solid var(--brass)}
@@ -67,6 +70,19 @@ a.explore-card:hover{transform:translateY(-4px);border-color:var(--brass);box-sh
 .fact-list a{color:var(--green);border-bottom:1px solid var(--brass)}
 .site-footer{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:32px clamp(24px,7.5vw,128px);border-top:1px solid var(--line);color:var(--muted);font-size:10px}
 .site-footer a{font-weight:800;color:var(--green)}
+.feedback-section{padding:0 clamp(24px,7.5vw,128px) 110px;max-width:1700px;margin:auto}
+.feedback-section h2{font-size:clamp(28px,3vw,42px);letter-spacing:-.04em;line-height:1.2;color:var(--green);max-width:760px;margin:22px 0 34px}
+.feedback-form{max-width:760px;display:grid;gap:18px}
+.feedback-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.feedback-form label{display:grid;gap:8px;color:var(--green);font-size:11px;font-weight:800;letter-spacing:.5px}
+.feedback-form input,.feedback-form textarea{width:100%;border:1px solid var(--line);border-radius:4px;padding:13px 14px;background:#fff;color:var(--ink);font:inherit;font-size:14px;resize:vertical}
+.feedback-form button{justify-self:start;border:0;border-radius:3px;background:var(--green);color:var(--cream);padding:14px 24px;font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+.feedback-form button:hover{background:var(--green-deep)}
+.feedback-form button:disabled{opacity:.65;cursor:wait}
+#feedback-status{min-height:18px;margin:0;font-size:12px;color:var(--green)}
+#feedback-status.error{color:#a8323f}
+.feedback-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important}
 @media(max-width:1050px){.site-header{gap:25px}.identity-name{display:none}}
 @media(max-width:760px){.site-header{height:auto;min-height:79px;padding:19px 24px;flex-wrap:wrap;gap:16px}.site-nav{order:3;width:100%;margin-left:0;justify-content:space-between;flex-wrap:wrap;gap:10px}.section-header>.text-link{margin-top:24px}.site-nav a{font-size:11px}.site-nav a.active::after{bottom:-13px}.hero{min-height:380px;padding-top:70px;padding-bottom:70px}.about-section{padding-top:64px}.section-header{display:block}.explore-section{padding-top:60px;padding-bottom:76px}.explore-grid,.fact-list{grid-template-columns:1fr}.page-intro{padding-top:64px}.explore-card{min-height:230px}.card-icon{margin:23px 0 15px}.site-footer{flex-wrap:wrap}}
 @media(max-width:430px){.site-nav a{font-size:10px}.card-link{flex-wrap:wrap;gap:8px}}
+@media(max-width:600px){.feedback-fields{grid-template-columns:1fr}.feedback-section{padding-bottom:72px}}

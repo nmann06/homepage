@@ -4,6 +4,8 @@ Nathaniel Mann's personal site, live at [nathanielmann.ca](https://nathanielmann
 
 The investment tool it links to, Lettuce, lives in its own repository, [nmann06/Investment-Tool](https://github.com/nmann06/Investment-Tool), and runs at [app.nathanielmann.ca](https://app.nathanielmann.ca/app).
 
+The header serves `public/nathaniel-mann-resume.pdf` directly. The home-page feedback form sends to the Square Game service's `/square-game/api/feedback` endpoint, which uses that service's existing Resend configuration to email `nate@nathanielmann.ca`.
+
 ## Layout
 
 | Path | Purpose |
