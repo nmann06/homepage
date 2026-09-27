@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.join(__dirname, 'public');
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.pdf': 'application/pdf' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.pdf': 'application/pdf', '.webp': 'image/webp' };
 // Mirrors the routes in render.yaml.
 const rewrites = { '/': '/index.html', '/about': '/index.html', '/projects': '/index.html', '/square-game': '/square-game.html' };
 const redirects = { '/app': 'https://app.nathanielmann.ca/app', '/research.html': 'https://app.nathanielmann.ca/app', '/login': 'https://app.nathanielmann.ca/login', '/portfolio': '/projects' };
