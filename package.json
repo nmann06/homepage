@@ -5,6 +5,7 @@
   "engines": { "node": ">=20" },
   "description": "Nathaniel Mann's personal homepage",
   "scripts": {
-    "start": "node serve.js"
+    "start": "node serve.js",
+    "sync-game": "node sync-game.js"
   }
 }
