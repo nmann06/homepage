@@ -432,6 +432,14 @@ $('account-sign-out').addEventListener('click', () => {
   setError('account-error');
 });
 
+const mobileRoomLayout = window.matchMedia('(max-width: 530px)');
+function positionPauseControls() {
+  const destination = document.querySelector(mobileRoomLayout.matches ? '.room-actions' : '.score-controls');
+  destination.append($('pause-controls'));
+}
+mobileRoomLayout.addEventListener('change', positionPauseControls);
+positionPauseControls();
+
 if (roomId) {
   const queryToken = new URLSearchParams(location.search).get('token');
   playerToken = queryToken || localStorage.getItem(`square-token-${roomId}`);
