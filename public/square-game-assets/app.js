@@ -517,10 +517,13 @@ document.querySelectorAll('[data-days]').forEach(button => button.addEventListen
   $('minute-label').textContent = formatTimer(timerSeconds);
   document.querySelectorAll('[data-days]').forEach(item => item.classList.toggle('active', item === button));
 }));
+$('wildcard-slider').addEventListener('input', event => {
+  $('wildcard-count').value = event.currentTarget.value;
+});
 $('create-button').addEventListener('click', async () => {
   setError('setup-error');
   try {
-    const data = await api('/api/rooms', { method: 'POST', body: JSON.stringify({ name: $('create-name').value, timerSeconds }) });
+    const data = await api('/api/rooms', { method: 'POST', body: JSON.stringify({ name: $('create-name').value, timerSeconds, wildcardCount: Number($('wildcard-slider').value) }) });
     localStorage.setItem('square-player-name', $('create-name').value.trim());
     setRoom(data, data.token);
   } catch (error) { setError('setup-error', error.message); }
