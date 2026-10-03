@@ -12,6 +12,112 @@
   document.getElementById('footer-year').textContent = new Date().getFullYear();
   const titles = { home: 'Nathaniel Mann — Electrical engineering student', about: 'About Me — Nathaniel Mann', projects: 'Projects — Nathaniel Mann' };
   document.title = titles[page];
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+    const slides = [...gallery.querySelectorAll('.gallery-slide')];
+    if (slides.length < 2) return;
+    const controls = gallery.querySelector('.gallery-controls');
+    const toggle = gallery.querySelector('[data-toggle]');
+    const count = gallery.querySelector('.gallery-count');
+    const viewport = gallery.querySelector('.gallery-slides');
+    const previous = gallery.querySelector('[data-prev]');
+    const next = gallery.querySelector('[data-next]');
+    gallery.append(previous, next);
+    previous.classList.add('gallery-arrow', 'gallery-prev');
+    next.classList.add('gallery-arrow', 'gallery-next');
+    let current = 0;
+    let paused = reducedMotion.matches;
+    let visible = false;
+    let timer;
+    let transitioning = false;
+    controls.hidden = false;
+
+    const updateToggle = () => {
+      const label = paused ? 'Resume slideshow' : 'Pause slideshow';
+      toggle.setAttribute('aria-label', label);
+      toggle.title = label;
+      toggle.innerHTML = paused
+        ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>'
+        : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
+    };
+    const schedule = () => {
+      clearTimeout(timer);
+      const video = slides[current].querySelector('video');
+      if (transitioning || paused || !visible || document.hidden || gallery.matches(':hover') || gallery.contains(document.activeElement) || (video && !video.paused)) return;
+      timer = setTimeout(() => show(current + 1), video ? 20000 : 10000);
+    };
+    const positionArrows = () => {
+      const media = slides[current].querySelector('img, video');
+      gallery.style.setProperty('--arrow-top', `${media.getBoundingClientRect().height / 2}px`);
+    };
+    new ResizeObserver(positionArrows).observe(viewport);
+    const show = async (index) => {
+      if (transitioning) return;
+      transitioning = true;
+      clearTimeout(timer);
+      const outgoing = slides[current];
+      outgoing.querySelector('video')?.pause();
+      const direction = index > current ? 1 : -1;
+      const oldHeight = viewport.getBoundingClientRect().height;
+      current = (index + slides.length) % slides.length;
+      const incoming = slides[current];
+      outgoing.classList.add('gallery-outgoing');
+      outgoing.setAttribute('aria-hidden', 'true');
+      outgoing.inert = true;
+      incoming.hidden = false;
+      count.textContent = `${current + 1} / ${slides.length}`;
+      positionArrows();
+      if (!reducedMotion.matches) {
+        const options = { duration: 550, easing: 'cubic-bezier(.22,.61,.36,1)' };
+        const animations = [
+          outgoing.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${-direction * 100}%)` }], options),
+          incoming.animate([{ transform: `translateX(${direction * 100}%)` }, { transform: 'translateX(0)' }], options),
+          viewport.animate([{ height: `${oldHeight}px` }, { height: `${incoming.getBoundingClientRect().height}px` }], options)
+        ];
+        await Promise.allSettled(animations.map(animation => animation.finished));
+      }
+      outgoing.hidden = true;
+      outgoing.classList.remove('gallery-outgoing');
+      outgoing.removeAttribute('aria-hidden');
+      outgoing.inert = false;
+      transitioning = false;
+      positionArrows();
+      schedule();
+    };
+    previous.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    toggle.addEventListener('click', () => {
+      paused = !paused;
+      updateToggle();
+      schedule();
+    });
+    gallery.addEventListener('mouseenter', schedule);
+    gallery.addEventListener('mouseleave', schedule);
+    gallery.addEventListener('focusin', schedule);
+    gallery.addEventListener('focusout', () => setTimeout(schedule, 0));
+    gallery.querySelectorAll('video').forEach((video) => {
+      video.addEventListener('play', schedule);
+      video.addEventListener('pause', schedule);
+      video.addEventListener('ended', schedule);
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) slides[current].querySelector('video')?.pause();
+      schedule();
+    });
+    reducedMotion.addEventListener('change', () => {
+      paused = reducedMotion.matches;
+      updateToggle();
+      schedule();
+    });
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (!visible) slides[current].querySelector('video')?.pause();
+      schedule();
+    }, { threshold: 0.2 }).observe(gallery);
+    updateToggle();
+  });
+
   const form = document.getElementById('feedback-form');
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
