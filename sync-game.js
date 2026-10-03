@@ -5,11 +5,13 @@ const { createHash } = require('node:crypto');
 
 const source = path.resolve(process.argv[2] || path.join(__dirname, '..', 'square-game'), 'public');
 const destination = path.join(__dirname, 'public');
-const assets = ['app.js', 'styles.css'].map(name => ({ name, content: fs.readFileSync(path.join(source, name)) }));
+const assets = ['app.js', 'styles.css', 'tutorial.js'].map(name => ({ name, content: fs.readFileSync(path.join(source, name)) }));
 let html = fs.readFileSync(path.join(source, 'index.html'), 'utf8');
 for (const { name, content } of assets) {
   const version = createHash('sha256').update(content).digest('hex').slice(0, 12);
-  html = html.replace(`/square-game/${name}`, `/square-game-assets/${name}?v=${version}`);
+  const assetName = name.replace(/\./g, '\\.');
+  const assetUrl = new RegExp(`/square-game/${assetName}(?:\\?[^"'\\s<>]*)?`, 'g');
+  html = html.replace(assetUrl, `/square-game-assets/${name}?v=${version}`);
 }
 html = html.replace('/square-game/config.js', '/square-game-assets/config.js');
 fs.mkdirSync(path.join(destination, 'square-game-assets'), { recursive: true });
