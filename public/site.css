@@ -31,6 +31,10 @@ main{flex:1}
 .section-header h2 em{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.04em;color:var(--green)}
 .section-header h2 em{font-family:inherit;font-style:normal;font-weight:inherit;letter-spacing:inherit;color:inherit}
 .about-section{padding:96px clamp(24px,7.5vw,128px) 20px;max-width:1700px;margin:auto;scroll-margin-top:20px}
+.about-section{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:center;gap:clamp(32px,5vw,80px)}
+.home-about-copy{min-width:0}
+.home-portrait{display:block;width:100%;max-width:420px;height:auto;justify-self:end;border-radius:6px}
+@media(max-width:760px){.about-section{grid-template-columns:1fr;gap:32px}.home-portrait{justify-self:start}}
 .about-text{font-size:clamp(22px,2.4vw,34px);line-height:1.45;letter-spacing:-.02em;color:var(--ink);max-width:900px;margin:22px 0 28px}
 .about-text a{color:var(--green);border-bottom:1px solid var(--brass)}
 .text-link{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:800;color:var(--green);border-bottom:1px solid var(--brass);padding-bottom:4px;white-space:nowrap;transition:gap .2s}
