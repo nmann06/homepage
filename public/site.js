@@ -44,12 +44,16 @@
     const schedule = () => {
       clearTimeout(timer);
       const video = slides[current].querySelector('video');
-      if (transitioning || paused || !visible || document.hidden || gallery.matches(':hover') || gallery.contains(document.activeElement) || (video && !video.paused)) return;
+      if (transitioning || paused || !visible || document.hidden || gallery.matches(':hover') || gallery.contains(document.activeElement) || (video && !video.paused && !video.hasAttribute('data-silent'))) return;
       timer = setTimeout(() => show(current + 1), video ? 20000 : 10000);
     };
     const positionArrows = () => {
       const media = slides[current].querySelector('img, video');
       gallery.style.setProperty('--arrow-top', `${media.getBoundingClientRect().height / 2}px`);
+    };
+    const playSilent = () => {
+      const video = slides[current].querySelector('video[data-silent]');
+      if (video && visible && !document.hidden) video.play().catch(() => {});
     };
     new ResizeObserver(positionArrows).observe(viewport);
     const show = async (index) => {
@@ -66,6 +70,7 @@
       outgoing.setAttribute('aria-hidden', 'true');
       outgoing.inert = true;
       incoming.hidden = false;
+      playSilent();
       count.textContent = `${current + 1} / ${slides.length}`;
       positionArrows();
       if (!reducedMotion.matches) {
@@ -96,6 +101,10 @@
     gallery.addEventListener('mouseleave', schedule);
     gallery.addEventListener('focusin', schedule);
     gallery.addEventListener('focusout', () => setTimeout(schedule, 0));
+    gallery.querySelectorAll('video[data-silent]').forEach((video) => {
+      video.muted = true;
+      video.addEventListener('volumechange', () => { if (!video.muted || video.volume) { video.muted = true; video.volume = 0; } });
+    });
     gallery.querySelectorAll('video').forEach((video) => {
       video.addEventListener('play', schedule);
       video.addEventListener('pause', schedule);
@@ -103,6 +112,7 @@
     });
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) slides[current].querySelector('video')?.pause();
+      else playSilent();
       schedule();
     });
     reducedMotion.addEventListener('change', () => {
@@ -113,6 +123,7 @@
     new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       if (!visible) slides[current].querySelector('video')?.pause();
+      else playSilent();
       schedule();
     }, { threshold: 0.2 }).observe(gallery);
     updateToggle();
