@@ -14,6 +14,21 @@ for (const { name, content } of assets) {
   html = html.replace(assetUrl, `/square-game-assets/${name}?v=${version}`);
 }
 html = html.replace('/square-game/config.js', '/square-game-assets/config.js');
+// Search and link-preview tags belong to the homepage, so add them to every synced copy.
+html = html.replace(/<title>[^<]*<\/title>/, `<title>Square Game — Nathaniel Mann</title>
+  <meta name="description" content="Square Game is a free online version of the board game Iota. Play a friend or a bot, take turns over days, and see post-game stats.">
+  <link rel="canonical" href="https://nathanielmann.ca/square-game">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nathaniel Mann">
+  <meta property="og:title" content="Square Game">
+  <meta property="og:description" content="A free online version of the board game Iota. Play a friend or a bot.">
+  <meta property="og:image" content="https://nathanielmann.ca/images/og-square-game.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">`);
 fs.mkdirSync(path.join(destination, 'square-game-assets'), { recursive: true });
 for (const { name, content } of assets) fs.writeFileSync(path.join(destination, 'square-game-assets', name), content);
 fs.writeFileSync(path.join(destination, 'square-game.html'), html);

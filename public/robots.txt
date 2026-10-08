@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /square-game/room/
+Disallow: /square-game/account
+
+Sitemap: https://nathanielmann.ca/sitemap.xml

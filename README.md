@@ -13,6 +13,8 @@ The header serves `public/nathaniel-mann-resume.pdf` directly. The home-page fee
 | `public/index.html` | Home, About and Projects views |
 | `public/site.css` | Styles |
 | `public/site.js` | Shows the home, `/about` or `/projects` view and sets the footer year |
+| `public/robots.txt`, `public/sitemap.xml` | Crawler rules and the sitemap submitted to Google Search Console. Add new pages to the sitemap. |
+| `public/og-image.png`, `public/favicon.*` | Link preview image and site icons |
 | `render.yaml` | Render static-site configuration, redirects and rewrites |
 | `serve.js` | Local preview server that mirrors the routes in `render.yaml` |
 

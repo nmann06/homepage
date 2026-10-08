@@ -10,8 +10,18 @@
     if (active) link.setAttribute('aria-current', 'page');
   });
   document.getElementById('footer-year').textContent = new Date().getFullYear();
-  const titles = { home: 'Nathaniel Mann — Electrical engineering student', about: 'About Me — Nathaniel Mann', projects: 'Projects — Nathaniel Mann' };
-  document.title = titles[page];
+  const meta = {
+    home: ['Nathaniel Mann — Electrical engineering student', "Nathaniel Mann is a third year electrical engineering student at Queen's University who loves programming, DIY projects and embedded systems.", '/'],
+    about: ['About Me — Nathaniel Mann', "About Nathaniel Mann: Electrical Engineering and Innovation student at Queen's University who plays ultimate, kitesurfs, backcountry skis and paints watercolours.", '/about'],
+    projects: ['Projects — Nathaniel Mann', 'Projects by Nathaniel Mann: Lettuce investment research tool, Square Game, a 1995 Toyota 4Runner restoration, an NFC smart locker and a water filtration unit.', '/projects']
+  };
+  const [title, description, canonicalPath] = meta[page];
+  document.title = title;
+  document.querySelector('meta[name="description"]').content = description;
+  const canonical = document.createElement('link');
+  canonical.rel = 'canonical';
+  canonical.href = `https://nathanielmann.ca${canonicalPath}`;
+  document.head.append(canonical);
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('[data-gallery]').forEach((gallery) => {
