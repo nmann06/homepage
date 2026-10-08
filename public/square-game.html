@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#14271f">
   <title>Square Game</title>
-  <link rel="stylesheet" href="/square-game-assets/styles.css?v=78e90dc23ecc">
+  <link rel="stylesheet" href="/square-game-assets/styles.css?v=c36c64a5e63d">
+  <script>try { if (localStorage.getItem('square-account-token')) document.documentElement.classList.add('account-restoring'); } catch {}</script>
   <script src="/square-game-assets/config.js"></script>
-  <script src="/square-game-assets/app.js?v=07bc7b493e0c" defer></script>
-  <script src="/square-game-assets/tutorial.js?v=3bd9c3e5c653" defer></script>
+  <script src="/square-game-assets/app.js?v=77bdbe5991a4" defer></script>
+  <script src="/square-game-assets/tutorial.js?v=72ce51e8bf66" defer></script>
 </head>
 <body>
   <div class="shell">
@@ -27,6 +28,7 @@
         <div id="landing-account">
           <section id="account-panel" class="account-panel card-panel">
             <div id="account-sign-in">
+              <div class="account-loading" role="status"><span class="account-spinner" aria-hidden="true"></span>Signing you in…</div>
               <p class="eyebrow">LET’S PLAY</p>
               <h2>Sign in to Square Game</h2>
               <p>Save your progress and pick up where you left off. We’ll email you a sign-in code. No password needed.</p>
@@ -113,8 +115,8 @@
             <div class="board-wrap"><div class="board-head"><span>GAME BOARD</span><span id="deck-count"></span></div><div id="board" class="board" aria-label="Game board"></div></div>
             <aside class="side-panel">
               <div class="side-section"><h2>Your hand</h2><p id="hand-help" class="fine">Select a card, then choose an empty square.</p><div id="hand" class="hand"></div></div>
-              <div class="side-section"><h3>Move</h3><p id="move-help" class="fine">Play 1–4 cards in one row or column.</p><div id="staged" class="staged"></div><div id="move-preview" class="move-preview" role="status" aria-live="polite">Place tiles to preview your score.</div><div class="button-row"><button id="undo-button" class="secondary">Undo</button><button id="play-button" class="primary">Play cards</button></div><button id="pass-button" class="text-button">Pass turn</button><label class="trade-label"><input id="trade-mode" type="checkbox"> Trade selected cards when passing</label><p id="swap-help" class="fine">To pick up wilds: select a regular card in your hand, then click a wild card on the board. Repeat for more wilds before placing your main move.</p></div>
-              <div class="rules-mini"><h3>Quick rules</h3><p>Each line has 2–4 cards. For color, shape, and number, values must be all the same or all different. Score every line you create or extend. Each completed four-card lot doubles the whole turn.</p><a href="https://www.ultraboardgames.com/iota/game-rules.php" target="_blank" rel="noopener">Read the original rules ↗</a></div>
+              <div class="side-section"><h3>Move</h3><p id="move-help" class="fine">Play 1–4 cards in one row or column.</p><div id="staged" class="staged"></div><div id="move-preview" class="move-preview" role="status" aria-live="polite">Place tiles to preview your score.</div><div class="button-row"><button id="undo-button" class="secondary">Undo</button><button id="play-button" class="primary">Play cards</button></div><button id="pass-button" class="text-button">Pass turn</button><label class="trade-label"><input id="trade-mode" type="checkbox"> Trade selected cards when passing</label></div>
+              <div class="rules-mini"><button id="room-tutorial" class="secondary wide" type="button">How to play <span aria-hidden="true">↗</span></button></div>
             </aside>
           </div>
         </div>

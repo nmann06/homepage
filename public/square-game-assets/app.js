@@ -299,8 +299,11 @@ function useAccount(email, profile) {
   }
   renderAccountAppearance();
 }
+// index.html marks a remembered session before first paint so the email form never flashes.
+function doneRestoringAccount() { document.documentElement.classList.remove('account-restoring'); }
 async function refreshAccount() {
   if (!accountToken) {
+    doneRestoringAccount();
     show('account-sign-in', true); show('account-profile', false);
     show('account-history', false);
     renderLanding();
@@ -349,6 +352,8 @@ async function refreshAccount() {
       show('account-history', false);
       $('account-error').textContent = 'Your sign-in expired. Request a new code.';
     } else $('account-error').textContent = error.message;
+  } finally {
+    doneRestoringAccount();
   }
   renderLanding();
 }
