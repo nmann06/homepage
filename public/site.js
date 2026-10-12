@@ -157,7 +157,7 @@
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || 'Could not send feedback.');
       form.reset();
-      status.textContent = 'Thanks — your feedback was sent.';
+      status.textContent = 'Thanks, your feedback was sent.';
     } catch (error) {
       status.classList.add('error');
       status.textContent = error.message || 'Could not send feedback. Please try again.';

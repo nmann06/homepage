@@ -71,7 +71,7 @@ The game's browser files are copied into `public/square-game.html` and `public/s
 
 `GAME_API_ORIGIN` is set in `render.yaml` to the Square Game web service's public origin. `build.js` writes it into `public/square-game-assets/config.js` during deployment. If the Render static site is configured manually rather than through its Blueprint, set the same variable on its dashboard Environment page before redeploying.
 
-After changing the game UI, run `npm run sync-game` here (or `node sync-game.js /path/to/square-game` if the game repo isn't next to this one). Commit and deploy the resulting homepage changes as well as the game service changes. The script preserves the homepage's API configuration, which `build.js` generates at deployment. Deploying only the game service doesn't update the game UI on nathanielmann.ca. GoDaddy DNS and the homepage's Render static site don't need to change.
+After changing the game UI, run `npm run sync-game` here (or `node sync-game.js /path/to/square-game` if the game repo isn't next to this one). Commit and deploy the resulting homepage changes as well as the game service changes. The script preserves the homepage's API configuration, which `build.js` generates at deployment. Deploying only the game service doesn't update the game UI on nathanielmann.ca.
 
 ## Deploy
 
