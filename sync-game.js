@@ -5,7 +5,7 @@ const { createHash } = require('node:crypto');
 
 const source = path.resolve(process.argv[2] || path.join(__dirname, '..', 'square-game'), 'public');
 const destination = path.join(__dirname, 'public');
-const assets = ['app.js', 'styles.css', 'tutorial.js'].map(name => ({ name, content: fs.readFileSync(path.join(source, name)) }));
+const assets = ['i18n.js', 'app.js', 'styles.css', 'tutorial.js'].map(name => ({ name, content: fs.readFileSync(path.join(source, name)) }));
 let html = fs.readFileSync(path.join(source, 'index.html'), 'utf8');
 for (const { name, content } of assets) {
   const version = createHash('sha256').update(content).digest('hex').slice(0, 12);
