@@ -121,6 +121,7 @@ a.explore-card:hover{transform:translateY(-4px);border-color:var(--brass);box-sh
 .gallery-outgoing{position:absolute;inset:0 0 auto}
 .gallery-slide[hidden],.gallery-controls[hidden]{display:none}
 .gallery-slide img,.gallery-slide video{display:block;width:100%;height:auto;border-radius:5px}
+.gallery-placeholder{aspect-ratio:1360/960;display:grid;place-items:center;border:1px dashed #c9ccbf;border-radius:5px;font-size:10px;font-weight:800;letter-spacing:2.5px;color:var(--muted)}
 .gallery-slide figcaption{padding:18px 0;min-height:96px;font-size:12px;line-height:1.6;color:var(--muted)}
 .gallery-slide figcaption strong{display:block;color:var(--green);font-size:13px;margin-bottom:4px}
 .gallery-controls{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:56px;border-top:1px solid var(--line)}
