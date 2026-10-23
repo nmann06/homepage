@@ -125,7 +125,25 @@
   </figure></div>
 
 </div>
-    <div class="project-copy"><span class="card-index">06 / VOICE ASSISTANT</span><h2>Jarvis</h2><p class="project-subtitle">Just a Rather Vaguely Intelligent System</p><p>I built my own voice assistant that runs on a laptop at home. When I say "Hey Jarvis", it records what I say, transcribes it on the laptop's GPU with Whisper, asks Claude what to do, and answers out loud in a British voice, usually about three seconds after I stop talking. It can check my calendar, assignments and test schedule, and my email, draft replies, add to my to-do list, save notes to Google Drive, and set timers. I can also communicate with it through a discord bot, where it gives text replies back, sends me reminders and a morning briefing. If it yaps, I can say "stop", and "continue" picks it back up.</p><p class="project-stack">Python · Claude API · Whisper · Piper TTS · Discord.py</p><div class="project-links"><a class="text-link" href="https://github.com/nmann06/jarvis">GitHub ↗</a></div></div>
+    <div class="project-copy"><span class="card-index">07 / VOICE ASSISTANT</span><h2>Jarvis</h2><p class="project-subtitle">Just a Rather Vaguely Intelligent System</p><p>I built my own voice assistant that runs on a laptop at home. When I say "Hey Jarvis", it records what I say, transcribes it on the laptop's GPU with Whisper, asks Claude what to do, and answers out loud in a British voice, usually about three seconds after I stop talking. It can check my calendar, assignments and test schedule, and my email, draft replies, add to my to-do list, save notes to Google Drive, and set timers. I can also communicate with it through a discord bot, where it gives text replies back, sends me reminders and a morning briefing. If it yaps, I can say "stop", and "continue" picks it back up.</p><p class="project-stack">Python · Claude API · Whisper · Piper TTS · Discord.py</p><div class="project-links"><a class="text-link" href="https://github.com/nmann06/jarvis">GitHub ↗</a></div></div>
+  </article>
+  <article class="project-row" id="audio-amp">
+    <div class="project-gallery" role="region" aria-roledescription="carousel" aria-label="Audio Amplifier gallery" data-gallery>
+  <div class="gallery-slides"><figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
+    <img src="/images/projects/amp-pcb.png" alt="KiCad PCB layout of the amplifier on a 38 by 38 mm board with an NM logo in copper" width="1246" height="1186" loading="lazy" decoding="async">
+  </figure>
+<figure class="gallery-slide" hidden role="group" aria-roledescription="slide" aria-label="2 of 4">
+    <img src="/images/projects/amp-3d.png" alt="3D render of the assembled board with the transistor, trim potentiometer and three red film capacitors" width="1719" height="1072" loading="lazy" decoding="async">
+  </figure>
+<figure class="gallery-slide" hidden role="group" aria-roledescription="slide" aria-label="3 of 4">
+    <img src="/images/projects/amp-schematic.png" alt="KiCad schematic of the common-emitter amplifier built around a 2N3904 transistor" width="1198" height="747" loading="lazy" decoding="async">
+  </figure>
+<figure class="gallery-slide" hidden role="group" aria-roledescription="slide" aria-label="4 of 4">
+    <img src="/images/projects/amp-bode.png" alt="Simulated frequency response showing 5.53 dB of gain with cutoffs at 85 Hz and 16.23 kHz" width="1119" height="571" loading="lazy" decoding="async">
+  </figure></div>
+  <div class="gallery-controls" hidden><button type="button" data-prev aria-label="Previous slide">←</button><span class="gallery-count" aria-live="off">1 / 4</span><button type="button" data-next aria-label="Next slide">→</button><button type="button" class="gallery-toggle" data-toggle>Pause slideshow</button></div>
+</div>
+    <div class="project-copy"><span class="card-index">06 / CIRCUIT DESIGN</span><h2>Audio Amplifier</h2><p class="project-subtitle">ELEC 353 project · 2026</p><p>I designed a small audio amplifier around a single 2N3904 transistor in a common-emitter configuration. A 2k/1k voltage divider biases the base, and the input signal comes in through three coupling capacitors in parallel (2.6 µF total). The potentiometer acts as the collector resistor, so turning it adjusts the gain. I simulated the circuit in LTspice to check the frequency response, which came out to 5.5ish dB of gain with a bandwidth of about 85 Hz to 16 kHz. I then drew the schematic and laid out the PCB in KiCad on a 38 × 38 mm board.</p><p class="project-stack">KiCad · LTspice</p></div>
   </article>
   <article class="project-row" id="lettuce">
     <div class="project-gallery" role="region" aria-roledescription="carousel" aria-label="Lettuce gallery" data-gallery>
